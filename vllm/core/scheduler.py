@@ -440,7 +440,8 @@ class Scheduler:
         # sequences. This may require a more sophisticated CUDA kernel.
         if preemption_mode is None:
             if seq_group.get_max_num_running_seqs() == 1:
-                preemption_mode = PreemptionMode.RECOMPUTE
+                #preemption_mode = PreemptionMode.RECOMPUTE
+                preemption_mode = PreemptionMode.SWAP # always use swap to test differences
             else:
                 preemption_mode = PreemptionMode.SWAP
         if preemption_mode == PreemptionMode.RECOMPUTE:
